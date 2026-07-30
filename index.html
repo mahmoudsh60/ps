@@ -5,6 +5,212 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LevelUP-Store 01555886990-01010763503</title>
   <link rel="stylesheet" href="includes/style.css">
+  <style>
+    :root {
+      --bg-main: #0a0e17;
+      --bg-card: rgba(20, 27, 45, 0.75);
+      --accent-blue: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-glow: rgba(37, 99, 235, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --console-bg: #05080f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 15px;
+      line-height: 1.5;
+    }
+
+    /* --- Header & Title --- */
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-main);
+      text-align: center;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    #UA {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      text-align: center;
+      max-width: 900px;
+      word-break: break-all;
+      margin-bottom: 20px;
+    }
+
+    hr {
+      width: 100%;
+      max-width: 950px;
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+      margin-bottom: 25px;
+    }
+
+    /* --- Controls Container (Buttons & Radios) --- */
+    .btn-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 20px 30px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #kernel-options {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    #kernel-options input[type="radio"] {
+      accent-color: var(--accent-blue);
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+    }
+
+    #kernel-options label {
+      cursor: pointer;
+      margin-left: -8px;
+    }
+
+    /* --- Main Jailbreak Button --- */
+    #jeilbrek {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-hover));
+      color: #ffffff;
+      border: none;
+      padding: 12px 45px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px var(--accent-glow);
+      letter-spacing: 0.5px;
+    }
+
+    #jeilbrek:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    }
+
+    #jeilbrek:active {
+      transform: translateY(0);
+    }
+
+    /* --- Auto Jailbreak Checkbox --- */
+    .autoJb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .autoJb input[type="checkbox"] {
+      accent-color: var(--accent-blue);
+      cursor: pointer;
+      width: 15px;
+      height: 15px;
+    }
+
+    /* --- Main Layout (Logo + Console) --- */
+    .main-layout {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .media-box {
+      flex: 0 0 280px;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-color);
+    }
+
+    .media-box img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* --- Console Output Box --- */
+    #console {
+      flex: 1;
+      min-width: 300px;
+      background-color: var(--console-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.88rem;
+      color: #22c55e;
+      overflow-y: auto;
+      max-height: 280px;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* --- Scrollbar Styling --- */
+    #console::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+    #console::-webkit-scrollbar-track {
+      background: var(--console-bg);
+    }
+    #console::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    #console::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
 </head>
 <body>
 
@@ -29,16 +235,13 @@
 
   <div class="main-layout">
     <div class="media-box">
-      <img src="includes/cat.jpg" alt="A cat staring at you">
+      <img src="includes/cat.jpg" alt="LevelUP Store Logo">
     </div>
 
     <pre id="console">Ready. Awaiting execution...</pre>
   </div>
 
-  </div>
-
   <script src="src/main.js"></script>
   <script src="includes/script.js"></script>
 </body>
-
 </html>
